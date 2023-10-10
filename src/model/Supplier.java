@@ -1,10 +1,13 @@
 package model;
 
 public class Supplier {
+	
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+private int ID;
+private String name;
+private String streetName;
+private int HouseNo;
+private int ZipCode;
 
-	}
 
 }
