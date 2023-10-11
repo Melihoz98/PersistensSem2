@@ -5,7 +5,7 @@ public class Clothing extends Product{
 	private String size;
 	private String colour;
 	
-	public Clothing(String productID, String productName, String productDescription, double productPrice,
+	public Clothing(int productID, String productName, String productDescription, double productPrice,
 			String productType, String countryOfOrigin, double purchasePrice, String size, String colour) {
 		super(productID, productName, productDescription, productPrice, productType, countryOfOrigin, purchasePrice);
 		this.size  = size;

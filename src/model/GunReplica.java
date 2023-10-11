@@ -4,7 +4,7 @@ public class GunReplica extends Product{
 
 	private double calibre;
 	
-	public GunReplica(String productID, String productName, String productDescription, double productPrice,
+	public GunReplica(int productID, String productName, String productDescription, double productPrice,
 			String productType, String countryOfOrigin, double purchasePrice, double calibre) {
 		super(productID, productName, productDescription, productPrice, productType, countryOfOrigin, purchasePrice);
 		this.calibre = calibre;

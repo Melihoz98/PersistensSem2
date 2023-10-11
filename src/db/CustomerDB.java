@@ -11,7 +11,7 @@ import model.*;
 
 import controller.DataAccessException;
 
-public class CustomerDB implements CustomerDBIF{
+public class CustomerDB implements CustomerDBIF {
 
 	
 	
@@ -121,4 +121,4 @@ public class CustomerDB implements CustomerDBIF{
 //	
 	}
 	
-}
+

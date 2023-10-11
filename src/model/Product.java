@@ -2,7 +2,7 @@ package model;
 
 public class Product {
 
-    private String productID;
+    private int productID;
     private String productName;
     private String productDescription;
     private double productPrice;
@@ -10,7 +10,7 @@ public class Product {
     private String countryOfOrigin;
     private double purchasePrice;
 
-    public Product(String productID, String productName, String productDescription, double productPrice, String productType, String countryOfOrigin, double purchasePrice) {
+    public Product(int productID, String productName, String productDescription, double productPrice, String productType, String countryOfOrigin, double purchasePrice) {
         this.productID = productID;
         this.productName = productName;
         this.productDescription = productDescription;
@@ -20,11 +20,11 @@ public class Product {
         this.purchasePrice = purchasePrice;
         }
         
-        public String getProductID() {
+        public int getProductID() {
         return productID;
         }
         
-        public void setProductID(String productID) {
+        public void setProductID(int productID) {
         this.productID = productID;
         }
         

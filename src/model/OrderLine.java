@@ -5,17 +5,18 @@ public class OrderLine {
 	private int saleOrderID;
 	private int productID;
 	private double unitPrice;
+	private Product p;
 
 
 
-	public OrderLine(int quantity, int saleOrderID, int productID, double unitprice) {
+	public OrderLine(int quantity, int saleOrderID, int productID, double unitPrice, Product p) {
 
 		this.quantity = quantity;
 		this.saleOrderID = saleOrderID;
 		this.productID = productID;
 		this.unitPrice = unitPrice;
+		this.p = p;
 	}
-
 
 
 	public int getQuantity() {
@@ -62,6 +63,10 @@ public class OrderLine {
 
 	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+	
+	public Product getProduct() {
+		return p;
 	}
 
 
