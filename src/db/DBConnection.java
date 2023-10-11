@@ -2,11 +2,16 @@ package db;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import db.DBConnection;
 
 public class DBConnection {
 
+	private Connection connection = null;
+	private static DBConnection dbConnection;
+
+	
 	private static final String serverAddress = "jdbc:sqlserver://hildur.ucn.dk";
 	private static final String databaseName = ";databaseName = DMA-CSD-V23_10478728";
 	
@@ -95,7 +100,32 @@ public class DBConnection {
 	    	}
 	    	return isOpen;
 	 
-	 
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+//	    	public Connection getConnection() {
+//	    		return connection;
+//	    	}
+//	    	public void disconnect() {
+//	    		try {
+//	    			connection.close();
+//	    		} catch (SQLException e) {
+//	    			e.printStackTrace();
+//	    		}
+//	    	}
+//	 
 	 
 	 
 	 

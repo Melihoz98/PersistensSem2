@@ -12,6 +12,9 @@ public class Customer {
     private String customerType;
 
     
+    public Customer() {
+    	
+    }
 
     public Customer(int customerID, String lastName, String firstName, String streetName, String houseNo, String zipCode, String customerType) {
         this.customerID = customerID;
@@ -74,6 +77,8 @@ public class Customer {
     public void setHouseNo(String houseNo) {
         this.houseNo = houseNo;
     }
+    
+    
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;

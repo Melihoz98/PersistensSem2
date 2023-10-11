@@ -19,8 +19,8 @@ public class CustomerCtr implements CustomerDBIF{
 		
 	}
 
-	public List<Customer> findByCustomerID(int customerID) throws DataAccessException {
-		List<Customer> res = cusDB.findByCustomerID(customerID, true);
+	public List<Customer> findCustomerByCustomerID(int customerID) throws DataAccessException {
+		List<Customer> res = cusDB.findCustomerByCustomerID(customerID, true);
 		return res;
 	}
 
