@@ -1,10 +1,24 @@
 package model;
 
-public class Equipment {
+public class Equipment extends Product{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private String description;
+	
+	public Equipment(String productID, String productName, String productDescription, double productPrice,
+			String productType, String countryOfOrigin, double purchasePrice, String description) {
+		super(productID, productName, productDescription, productPrice, productType, countryOfOrigin, purchasePrice);
+		this.description = description;
+		
 	}
+
+	  // Getter-metode for description
+    public String getDescription() {
+        return description;
+    }
+
+    // Setter-metode for description
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }
