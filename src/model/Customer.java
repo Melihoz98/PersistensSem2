@@ -1,6 +1,8 @@
 
 package model;
 
+import java.util.List;
+
 public class Customer {
 
     private int customerID;
@@ -10,13 +12,16 @@ public class Customer {
     private String houseNo;
     private String zipCode;
     private String customerType;
+    private String clubType;
+    private String clubName;
+    private List<Phones> phoneNo;
 
     
     public Customer() {
     	
     }
 
-    public Customer(int customerID, String lastName, String firstName, String streetName, String houseNo, String zipCode, String customerType) {
+    public Customer(int customerID, String lastName, String firstName, String streetName, String houseNo, String zipCode, String customerType, String clubType, String clubName) {
         this.customerID = customerID;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -24,7 +29,9 @@ public class Customer {
         this.houseNo = houseNo;
         this.zipCode = zipCode;
         this.customerType = customerType;
-       
+        this.clubType = clubType;
+        this.clubName = clubName;
+        
     }
 
     // Getter methods
@@ -86,5 +93,28 @@ public class Customer {
 
     public void setCustomerType(String customerType) {
         this.customerType = customerType;
+    }
+    
+    
+    public String getClubType() {
+    	return clubType;
+    }
+    
+    public void setClubType(String clubType) {
+    	this.clubType = clubType;
+    }
+    
+    
+    public String getClubName() {
+    	return clubName;
+    }
+    
+    public void setClubName(String clubName) {
+    	this.clubName = clubName;
+    }
+    
+    
+    public List<Phones> getPhoneNumbers() {
+        return phoneNo;
     }
 }
