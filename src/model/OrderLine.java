@@ -17,6 +17,10 @@ public class OrderLine {
 		this.unitPrice = unitPrice;
 		this.p = p;
 	}
+		
+	public OrderLine(Product p, int quantity) {
+	}		
+
 
 
 	public int getQuantity() {
