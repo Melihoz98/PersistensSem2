@@ -48,8 +48,8 @@ public class CustomerDB implements CustomerDBIF {
 	}
 	
 	
-	public List<Customer> findCustomerByCustomerID(int customerID, boolean fullAssociation) throws DataAccessException {
-	    List<Customer> result = null;
+	public Customer findCustomerByCustomerID(int customerID, boolean fullAssociation) throws DataAccessException {
+	    Customer result = null;
 	    try {
 	    	findCustomerByCustomerID.setInt(1, customerID);
 	        ResultSet rs = findCustomerByCustomerID.executeQuery();
@@ -124,8 +124,8 @@ public class CustomerDB implements CustomerDBIF {
 //		return foundCustomers;
 //	}
 
-	private List<Customer> buildCustomerObjects(ResultSet rs, boolean fullAssociation) throws SQLException {
-	    List<Customer> foundCustomers = new ArrayList<Customer>();
+	private Customer buildCustomerObjects(ResultSet rs, boolean fullAssociation) throws SQLException {
+	    Customer foundCustomers = new Customer();
 	    
 	    while (rs.next()) {
 	        Customer customer = new Customer();
@@ -139,7 +139,7 @@ public class CustomerDB implements CustomerDBIF {
 	        customer.setClubType(rs.getString("ClubType"));
 	        customer.setClubName(rs.getString("ClubName"));
 	        
-	        foundCustomers.add(customer);
+	        foundCustomers = customer;
 	    }
 	    
 	    return foundCustomers;
