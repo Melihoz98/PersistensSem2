@@ -1,8 +1,5 @@
 package model;
 
-import model.Product;
-
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +25,7 @@ public class SaleOrder {
 		this.deliveryDate = deliveryDate;
 		this.customerID = customerID;
 		products = new ArrayList<>();
-		date = LocalDate.now();
+		setDate(LocalDate.now());
 	}
 	
 	
@@ -125,6 +122,18 @@ public class SaleOrder {
         }
         return res;
     }
+
+	public OrderLine[] getOrderLines() {
+		return null;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 	
 	
 	

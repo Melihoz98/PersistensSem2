@@ -3,14 +3,11 @@ package controller;
 
 
 import model.Customer;
-import model.Product;
 import model.SaleOrder;
+import model.Product;
 import model.OrderLine;
 
-import java.util.List;
-
-import controller.ProductCtr;
-import controller.DataAccessException;
+import db.SaleOrderDB;
 
 /**
  * This class will handle all the communication between the SaleUI and itself,
@@ -35,30 +32,40 @@ public SaleOrder createSaleOrder() {
 	
 
 public double findCustomerByCustomerID(int customerID) throws DataAccessException {
-    // Assuming you have a CustomerController (cc) that can retrieve a customer by ID
     CustomerCtr cc = new CustomerCtr();
     
     try {
-        // Find the customer by their ID
         Customer customer = (Customer) cc.findCustomerByCustomerID(customerID);
 
-        // Assuming you have an "order" object to add the customer to
-        // You should have an "order" object available or create one
         order.addCustomer(customer);
 
-        // Assuming you have a method in your "order" object to calculate the total
         return order.calculateTotal();
     } catch (DataAccessException e) {
-        // Handle the exception or rethrow it
         throw e;
     }
+    
+    }
 
-
-
-
-
-
+	public OrderLine addProduct(int productID, int quantity) throws DataAccessException {
+		ProductCtr pc = new ProductCtr();
+		Product p = pc.findProductByProductID(productID);
+		OrderLine ol = order.addProduct(p,quantity);
+		return ol;
 
 }
-	
+	public boolean confirm() throws DataAccessException{
+		SaleOrder o = order;
+		order = null;
+		return SaleOrderDB.saveOrder(o);
+	}
+
+
+	public CustomerCtr getCustomerCtr() {
+		return customerCtr;
+	}
+
+
+	public void setCustomerCtr(CustomerCtr customerCtr) {
+		this.customerCtr = customerCtr;
+	}
 }
