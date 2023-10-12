@@ -7,7 +7,7 @@ import controller.DataAccessException;
 import db.CustomerDB;
 import db.CustomerDBIF;
 import model.Customer;
-import model.Employee;
+
 
 public class CustomerCtr {
 
@@ -20,8 +20,8 @@ public class CustomerCtr {
 		
 	}
 
-	public List<Customer> findCustomerByCustomerID(int customerID) throws DataAccessException {
-		List<Customer> res = cusDB.findCustomerByCustomerID(customerID, true);
+	public Customer findCustomerByCustomerID(int customerID) throws DataAccessException {
+		Customer res = cusDB.findCustomerByCustomerID(customerID, true);
 		return res;
 	}
 

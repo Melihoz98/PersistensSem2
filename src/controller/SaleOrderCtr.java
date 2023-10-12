@@ -9,8 +9,8 @@ import model.OrderLine;
 
 import java.util.List;
 
-import ctr.ProductCtr;
-import db.DataAccessException;
+import controller.ProductCtr;
+import controller.DataAccessException;
 
 /**
  * This class will handle all the communication between the SaleUI and itself,
@@ -59,6 +59,6 @@ public double findCustomerByCustomerID(int customerID) throws DataAccessExceptio
 
 
 
-
+}
 	
 }

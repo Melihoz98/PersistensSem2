@@ -68,7 +68,7 @@ public class ProductDB implements ProductDBIF {
             currProduct.setProductID(rs.getInt("productID"));
             currProduct.setProductName(rs.getString("productName"));
             currProduct.setProductDescription(rs.getString("productDescription"));
-            currProduct.setProductPrice(rs.getDouble("productPrice"));
+            currProduct.setSalePrice(rs.getDouble("productPrice"));
             currProduct.setProductType(rs.getString("productType"));
             currProduct.setCountryOfOrigin(rs.getString("countryOfOrigin"));
             currProduct.setPurchasePrice(rs.getDouble("purchasePrice"));
@@ -118,12 +118,33 @@ public class ProductDB implements ProductDBIF {
     }
 
 
+    public void addProduct(Product product) throws DataAccessException {
+        // Define your SQL insert query for products
+        String insertQuery = "INSERT INTO Product (Name, PurchasePrice, SalePrice, RentPrice, CountryOfOrigin, MinStock, SupplierID, Type) " +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+   
+            insertPS.setString(1, product.getProductName());
+            insertPS.setDouble(2, product.getPurchasePrice());
+            insertPS.setDouble(3, product.getSalePrice());
+            insertPS.setDouble(4, product.getRentPrice());
+            insertPS.setString(5, product.getCountryOfOrigin());
+            insertPS.setInt(6, product.getMinStock());
+            insertPS.setInt(7, product.getSupplierID());
+            insertPS.setString(8, product.getType());
+           
+            insertPS.executeUpdate();
+        } catch (SQLException e) {
+           
+            throw new DataAccessException(DBMessages.COULD_NOT_INSERT, e);
+        }
+    
+}
+
   
 
 
-//	public void addProduct(Product product) throws DataAccessException {
-//        // Implement the logic to insert a product into the database
-//    }
 
     
 }

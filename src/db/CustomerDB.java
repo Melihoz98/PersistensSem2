@@ -94,35 +94,7 @@ public class CustomerDB implements CustomerDBIF {
 	    return res;
 	}
 
-	
-	
-	
 
-//	private List<Customer> buildCustomerObjects(ResultSet rs, boolean fullAssociation) {
-//		List<Customer> foundCustomers = new ArrayList<Customer>();
-//		String lName, fName, streetName, houseNo, zipCode, phones, customerType, clubType, clubName;
-//		if(!fullAssociation ) {
-//			//LastName, FirstName, StreetName, HouseNo, ZipCode, Phones, CustomerType, ClubType, ClubName
-//			while(rs.next()){
-//				lName = rs.getString("LastName");
-//				fName = rs.getString("FirstName"); 
-//				streetName = rs.getString("StreetName");
-//				houseNo = rs.getString("HouseNo");
-//				phones = rs.getString("Phones");
-//				zipCode = rs.getString("ZipCode");
-//				customerType = rs.getString("CustomerType");
-//				customerType = rs.getString("ClubType");
-//				clubName = rs.getString("ClubName");
-//				
-//				Customer customer = new Customer();
-//				
-//				// create a customer object
-//				// put customer object in a list
-//			}
-//			
-//		}
-//		return foundCustomers;
-//	}
 
 	private Customer buildCustomerObjects(ResultSet rs, boolean fullAssociation) throws SQLException {
 	    Customer foundCustomers = new Customer();

@@ -39,7 +39,7 @@ public class SaleOrder {
         if (p != null && quantity > 0) {
             res = checkDuplicateItems(p, quantity); //Vi tjekker om produktet allerede er i ordren
             if (res == null) {
-                res = new OrderLine(quantity, this.ID, p.getProductID(), p.getProductPrice(), p);
+                res = new OrderLine(quantity, this.ID, p.getProductID(), p.getSalePrice(), p);
                 products.add(res);
             }
         }
