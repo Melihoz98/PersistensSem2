@@ -72,9 +72,6 @@ public class SaleOrderDB {
                 if (insertSaleOrderPS != null) {
                     insertSaleOrderPS.close();
                 }
-                if (insertOrderLinePS != null) {
-                    insertOrderLinePS.close();
-                }
                 con.setAutoCommit(true);
             } catch (SQLException e) {
                 throw new DataAccessException(DBMessages.COULD_NOT_CLOSE_STATEMENT, e);
