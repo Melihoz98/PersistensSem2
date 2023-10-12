@@ -18,7 +18,9 @@ public class SaleOrder {
     private Customer c;
     
     
-    
+    public SaleOrder() {
+    	
+    }
 
 	public SaleOrder (int ID, boolean deliveryStatus, int deliveryDate, int customerID) {
 		this.ID = ID;
