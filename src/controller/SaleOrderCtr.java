@@ -9,11 +9,7 @@ import model.OrderLine;
 
 import db.SaleOrderDB;
 
-/**
- * This class will handle all the communication between the SaleUI and itself,
- * while also being the class that communicates to the other controller classes.
- * 
- */
+
 public class SaleOrderCtr {
 	
 	private CustomerCtr customerCtr;
@@ -32,7 +28,7 @@ public SaleOrder createSaleOrder() {
 	
 
 public double findCustomerByCustomerID(int customerID) throws DataAccessException {
-    CustomerCtr cc = new CustomerCtr();
+    CustomerCtr cc = getCustomerCtr();
     
     try {
         Customer customer = (Customer) cc.findCustomerByCustomerID(customerID);
@@ -53,10 +49,15 @@ public double findCustomerByCustomerID(int customerID) throws DataAccessExceptio
 		return ol;
 
 }
-	public boolean confirm() throws DataAccessException{
-		SaleOrder o = order;
-		order = null;
-		return SaleOrderDB.saveOrder(o);
+	public boolean confirm() throws DataAccessException {
+	    if (order != null && order.getCustomer() != null) {
+	        SaleOrder o = order;
+	        order = null;
+	        return SaleOrderDB.saveOrder(o);
+	    } else {
+	        System.err.println("Cannot confirm and save the order. Customer information is missing.");
+	        return false; 
+	    }
 	}
 
 

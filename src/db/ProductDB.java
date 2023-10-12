@@ -12,8 +12,11 @@ import model.Product;
 import controller.DataAccessException;
 
 public class ProductDB implements ProductDBIF {
-    // Define SQL queries and prepared statements
+	
+public ProductDB() throws DataAccessException {
+init();
 
+}
 	
 	private static final String FIND_ALL_PRODUCTS_Q = "select Name, PurchasePrice, SalePrice, RentPrice, CountryOfOrigin, MinStock, SupplierID, Type from Product";
 	private PreparedStatement findAllProductsPS;
@@ -76,7 +79,6 @@ public class ProductDB implements ProductDBIF {
                 
             }
         } catch (SQLException e) {
-            // Handle exceptions and throw DataAccessException if needed
             throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
         }
         return currProduct;
@@ -117,7 +119,7 @@ public class ProductDB implements ProductDBIF {
 
 
     public void addProduct(Product product) throws DataAccessException {
-        // Define your SQL insert query for products
+
         String insertQuery = "INSERT INTO Product (Name, PurchasePrice, SalePrice, RentPrice, CountryOfOrigin, MinStock, SupplierID, Type) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 

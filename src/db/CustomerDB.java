@@ -12,8 +12,11 @@ import model.*;
 import controller.DataAccessException;
 
 public class CustomerDB implements CustomerDBIF {
-
 	
+	public CustomerDB() throws DataAccessException {
+	init();
+
+	}
 	
 	private static final String FIND_ALL_CUSTOMERS_Q = "select LastName, FirstName, StreetName, HouseNo, ZipCode, Phones, CustomerType, ClubType, ClubName from Customer";
 	private PreparedStatement findAllCustomersPS;
@@ -55,7 +58,7 @@ public class CustomerDB implements CustomerDBIF {
 	        ResultSet rs = findCustomerByCustomerID.executeQuery();
 	        result = buildCustomerObjects(rs, fullAssociation);
 	    } catch (SQLException e) {
-	        // Handle the exception, you can throw a custom DataAccessException.
+	        
 	        throw new DataAccessException(DBMessages.COULD_NOT_BIND_OR_EXECUTE_QUERY, e);
 	    }
 	    return result;
@@ -70,7 +73,6 @@ public class CustomerDB implements CustomerDBIF {
 		try {
 			rs = this.findAllCustomersPS.executeQuery();
 		} catch (SQLException e) {
-			// e.printStackTsrace();
 			throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
 		}
 		List<Customer> res = buildObjects(rs, fullAssociation);
@@ -88,7 +90,6 @@ public class CustomerDB implements CustomerDBIF {
 	            res.add(currCustomer);
 	        }
 	    } catch (SQLException e) {
-	        // Handle the exception and throw a DataAccessException
 	        throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
 	    }
 	    return res;
@@ -106,7 +107,6 @@ public class CustomerDB implements CustomerDBIF {
 	        customer.setStreetName(rs.getString("StreetName"));
 	        customer.setHouseNo(rs.getString("HouseNo"));
 	        customer.setZipCode(rs.getString("ZipCode"));
-	       // customer.setPhones(rs.getString("Phones"));
 	        customer.setCustomerType(rs.getString("CustomerType"));
 	        customer.setClubType(rs.getString("ClubType"));
 	        customer.setClubName(rs.getString("ClubName"));
@@ -121,20 +121,16 @@ public class CustomerDB implements CustomerDBIF {
 	private Customer buildObject(ResultSet rs, boolean fullAssociation) throws DataAccessException {
 	    Customer currCustomer = new Customer();
 	    try {
-	        currCustomer.setCustomerID(rs.getInt("customerID")); // Update with the correct column name
+	        currCustomer.setCustomerID(rs.getInt("customerID")); 
 	        currCustomer.setLastName(rs.getString("lastName"));
 	        currCustomer.setFirstName(rs.getString("firstName"));
 	        currCustomer.setStreetName(rs.getString("streetName"));
 	        currCustomer.setHouseNo(rs.getString("houseNo"));
 	        currCustomer.setZipCode(rs.getString("zipCode"));
 	        currCustomer.setCustomerType(rs.getString("customerType"));
-	        currCustomer.setClubType(rs.getString("clubType")); // Update with the correct column name
+	        currCustomer.setClubType(rs.getString("clubType"));
 	        currCustomer.setClubName(rs.getString("clubName"));
-	        // Add code to set the list of phone numbers if needed
-	        
-	        // Add code for fullAssociation if needed
 	    } catch (SQLException e) {
-	        // Handle the exception and throw a DataAccessException
 	        throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
 	    }
 	    return currCustomer;
@@ -142,16 +138,8 @@ public class CustomerDB implements CustomerDBIF {
 
 	
 	
-	
-//	public CustomerDB() throws DataAccessException {
-//		departmentDB = new CustomerDB(this);
-//		init();
-//	
-	
-	
 	public Customer insert(Customer customer) throws DataAccessException {
 	    try {
-	        // Set the parameters for inserting a customer
 	        insertPS.setString(1, customer.getLastName());
 	        insertPS.setString(2, customer.getFirstName());
 	        insertPS.setString(3, customer.getStreetName());
@@ -160,12 +148,9 @@ public class CustomerDB implements CustomerDBIF {
 	        insertPS.setString(6, customer.getCustomerType());
 	        insertPS.setString(7, customer.getClubType());
 	        insertPS.setString(8, customer.getClubName());
-	        // Set additional parameters for inserting phone numbers if needed
 	        
-	        // Execute the insert query
 	        insertPS.executeUpdate();
 	    } catch (SQLException e) {
-	        // Handle the exception and throw a DataAccessException
 	        throw new DataAccessException(DBMessages.COULD_NOT_INSERT, e);
 	    }
 
