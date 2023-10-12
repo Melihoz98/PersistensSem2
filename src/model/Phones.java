@@ -4,11 +4,14 @@ public class Phones {
 
     private int phoneID;
     private String phone;
+    private int customerID;
+    private Customer customer;
     
     
-    public Phones(int phoneID, String phone) {
+    public Phones(int phoneID, String phone, int customerID) {
     	this.phoneID = phoneID;
     	this.phone = phone;
+    	this.customerID = customer.getCustomerID();
     }
 
     

@@ -101,33 +101,6 @@ public class DBConnection {
 	    	return isOpen;
 	 
 	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-//	    	public Connection getConnection() {
-//	    		return connection;
-//	    	}
-//	    	public void disconnect() {
-//	    		try {
-//	    			connection.close();
-//	    		} catch (SQLException e) {
-//	    			e.printStackTrace();
-//	    		}
-//	    	}
-//	 
-	 
-	 
 	 
 	    }	 
 	 

@@ -7,8 +7,9 @@ import controller.DataAccessException;
 import db.CustomerDB;
 import db.CustomerDBIF;
 import model.Customer;
+import model.Employee;
 
-public class CustomerCtr implements CustomerDBIF{
+public class CustomerCtr {
 
 	private CustomerDBIF cusDB;
 	
@@ -24,7 +25,16 @@ public class CustomerCtr implements CustomerDBIF{
 		return res;
 	}
 
+	public List<Customer> findAllCustomers() throws DataAccessException {
+		List<Customer> res = cusDB.findAllCustomers(false);
+		return res;
+	}
 	
+	
+	public Customer insert(Customer customer) throws DataAccessException {
+		Customer res = cusDB.insert(customer);
+		return res;
+	}
 	
 	
 }
