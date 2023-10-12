@@ -27,8 +27,6 @@ public class ProductDB implements ProductDBIF {
 	private static final String INSERT_Q = "insert into Customer ( Name, PurchasePrice, SalePrice, RentPrice, CountryOfOrigin, MinStock, SupplierID, Type)values (?, ?, ?, ?, ?, ?, ?, ?)";
 	private PreparedStatement insertPS;
 	
-	
-	
 	private void init() throws DataAccessException {
 		DBConnection dbcon = DBConnection.getInstance();
 		Connection con = dbcon.getDBcon();
@@ -42,7 +40,7 @@ public class ProductDB implements ProductDBIF {
 			throw new DataAccessException(DBMessages.COULD_NOT_PREPARE_STATEMENT, e);
 		}
 	}
-	
+
 	
 	
 	@Override

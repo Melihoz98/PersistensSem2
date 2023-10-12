@@ -19,8 +19,8 @@ public class DBConnection {
 	private static String password = ";password=Password1!";
 	private static String encryption = ";encrypt=false";
 	
-	 private DatabaseMetaData dma;
-	 private static Connection con;
+	private DatabaseMetaData dma;
+	private static Connection con;
 	 
 	 
 	    // an instance of the class is generated
@@ -99,6 +99,19 @@ public class DBConnection {
 	    		isOpen = false;
 	    	}
 	    	return isOpen;
+	    }
+	    	
+	    	
+	        public static void main(String[] args) {
+	            DBConnection dbConn = DBConnection.getInstance();
+	            if (dbConn.getDBcon() != null) {
+	                System.out.println("Successfully connected to the database!");
+	            } else {
+	                System.out.println("Failed to connect to the database.");
+	            }
+	            DBConnection.closeConnection(); // Jeg ved ikke om vi burde lukke connectionen her.
+	        
+	    
 	 
 	    	
 	 
