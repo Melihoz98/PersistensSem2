@@ -3,6 +3,7 @@ package tui;
 import controller.CustomerCtr;
 import controller.ProductCtr;
 import controller.SaleOrderCtr;
+import model.Customer;
 import controller.DataAccessException;
 
 import java.util.Scanner;
@@ -32,8 +33,9 @@ public class TextUI {
             System.out.println("========== Sale System Menu ==========");
             System.out.println("1. Create a new sale order");
             System.out.println("2. Add a product to the sale order");
-            System.out.println("3. Confirm and save the sale order");
-            System.out.println("4. Exit");
+            System.out.println("3. Create a new customer and associate with the sale order");
+            System.out.println("4. Confirm and save the sale order");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -47,9 +49,12 @@ public class TextUI {
                     addProductToSaleOrder();
                     break;
                 case 3:
-                    confirmAndSaveSaleOrder();
+                    createCustomerAndAssociate();
                     break;
                 case 4:
+                    confirmAndSaveSaleOrder();
+                    break;
+                case 5:
                     running = false;
                     break;
                 default:
@@ -79,6 +84,27 @@ public class TextUI {
         }
     }
 
+    private void createCustomerAndAssociate() {
+        System.out.print("Enter customer name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter customer address: ");
+        String address = scanner.nextLine();
+        System.out.print("Enter customer phone: ");
+        String phone = scanner.nextLine();
+
+        try {
+            Customer newCustomer = customerController.createCustomer(name, address, phone);
+            if (newCustomer != null) {
+                saleOrderController.associateCustomer(newCustomer);
+                System.out.println("Customer created and associated with the sale order.");
+            } else {
+                System.err.println("Error creating the customer.");
+            }
+        } catch (DataAccessException e) {
+            System.err.println("Error creating the customer: " + e.getMessage());
+        }
+    }
+
     private void confirmAndSaveSaleOrder() {
         try {
             boolean success = saleOrderController.confirm();
@@ -91,6 +117,5 @@ public class TextUI {
             System.err.println("Error confirming and saving the sale order: " + e.getMessage());
         }
     }
-    
-    
 }
+

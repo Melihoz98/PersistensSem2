@@ -69,4 +69,9 @@ public double findCustomerByCustomerID(int customerID) throws DataAccessExceptio
 	public void setCustomerCtr(CustomerCtr customerCtr) {
 		this.customerCtr = customerCtr;
 	}
+
+
+	public void associateCustomer(Customer newCustomer) {
+		
+	}
 }

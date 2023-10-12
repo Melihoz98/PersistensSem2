@@ -35,6 +35,13 @@ public class CustomerCtr {
 		Customer res = cusDB.insert(customer);
 		return res;
 	}
+	public Customer createCustomer(String name, String address, String phone) throws DataAccessException {
+	    Customer newCustomer = new Customer(0, name, address, phone, phone, phone, phone, phone, phone);
+	    // Insert the new customer into the database
+	    Customer insertedCustomer = insert(newCustomer);
+	    return insertedCustomer;
+	}
+
 	
 	
 }
