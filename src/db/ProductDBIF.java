@@ -1,16 +1,15 @@
+
 package db;
 
 import java.util.List;
-
-import controller.DataAccessException;
 import model.Product;
+import controller.DataAccessException;
 
 public interface ProductDBIF {
-		public Product findByProductID(int productID) throws DataAccessException;
-
-		public boolean saveProduct(Product p) throws DataAccessException;
-		
-		public List<Product> findAll ();
-
-
+    List<Product> findAllProducts(boolean fullAssociation) throws DataAccessException;
+    Product findProductByProductID(int productID, boolean fullAssociation) throws DataAccessException;
+//    void insertProduct(Product product) throws DataAccessException;
+  
 }
+
+

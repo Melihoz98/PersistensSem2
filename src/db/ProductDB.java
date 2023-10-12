@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Customer;
-import model.Employee;
 import model.Product;
 import controller.DataAccessException;
 
@@ -35,7 +34,7 @@ public class ProductDB implements ProductDBIF {
 		Connection con = dbcon.getDBcon();
 		try {
 			findAllProductsPS = con.prepareStatement(FIND_ALL_PRODUCTS_Q);
-			findProductByProductID = con.prepareStatement(FIND_PRODUCT_BY_PRODUCTID_Q);
+			findProductByProductIDPS = con.prepareStatement(FIND_PRODUCT_BY_PRODUCTID_Q);
 			insertPS = con.prepareStatement(INSERT_Q);
 														
 		} catch (SQLException e) {
@@ -46,17 +45,14 @@ public class ProductDB implements ProductDBIF {
 	
 	
 	
-	
-    // Implement the interface methods
-   
-    
+	@Override
     public Product findProductByProductID(int productID, boolean fullAssociation) throws DataAccessException {
     	Product res = null;
 		try {
 			findProductByProductIDPS.setInt(1, productID);
 			ResultSet rs = findProductByProductIDPS.executeQuery();
 			if (rs.next()) {
-				res = buildProductObjects(rs, fullAssociation);
+				res = buildProductObject(rs, fullAssociation);
 			}
 		} catch (SQLException e) {
 			
@@ -66,46 +62,68 @@ public class ProductDB implements ProductDBIF {
 	}
 
 
-    private Product buildProductObjects(ResultSet rs, boolean fullAssociation) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    private Product buildProductObject(ResultSet rs, boolean fullAssociation) throws DataAccessException {
+        Product currProduct = new Product();
+        try {
+            currProduct.setProductID(rs.getInt("productID"));
+            currProduct.setProductName(rs.getString("productName"));
+            currProduct.setProductDescription(rs.getString("productDescription"));
+            currProduct.setProductPrice(rs.getDouble("productPrice"));
+            currProduct.setProductType(rs.getString("productType"));
+            currProduct.setCountryOfOrigin(rs.getString("countryOfOrigin"));
+            currProduct.setPurchasePrice(rs.getDouble("purchasePrice"));
+
+
+            if (fullAssociation) {
+                
+            }
+        } catch (SQLException e) {
+            // Handle exceptions and throw DataAccessException if needed
+            throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
+        }
+        return currProduct;
+    }
 
 
 
+    
+    @Override
     public List<Product> findAllProducts(boolean fullAssociation) throws DataAccessException {
-    	List<Product> res = null;
-		try {
-			rs = this.findAllProductsPS.executeQuery();
-		} catch (SQLException e) {
-			// e.printStackTsrace();
-			throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
-		}
-		List<Product> res = buildObjects(rs, fullAssociation);
-		return res;
-	}
-	
+        ResultSet rs;
+        try {
+            rs = this.findAllProductsPS.executeQuery();
+        } catch (SQLException e) {
+            
+            throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
+        }
+        List<Product> products = findAllProducts(fullAssociation);
+
+        List<Product> res = buildProductObjects(rs, fullAssociation);
+        return res;
+    }
+
     
+    private List<Product> buildProductObjects(ResultSet rs, boolean fullAssociation) throws DataAccessException {
+        List<Product> products = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Product product = buildProductObject(rs, fullAssociation);
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            
+            throw new DataAccessException(DBMessages.COULD_NOT_READ_RESULTSET, e);
+        }
+        return products;
+    }
+
+
+  
+
+
+//	public void addProduct(Product product) throws DataAccessException {
+//        // Implement the logic to insert a product into the database
+//    }
+
     
-    
-
-	@Override
-    public Product findProductById(int productID, boolean fullAssociation) throws DataAccessException {
-        // Implement the logic to retrieve a product by its ID from the database
-    }
-
-    @Override
-    public void insertProduct(Product product) throws DataAccessException {
-        // Implement the logic to insert a product into the database
-    }
-
-    @Override
-    public void updateProduct(Product product) throws DataAccessException {
-        // Implement the logic to update a product in the database
-    }
-
-    @Override
-    public void deleteProduct(int productID) throws DataAccessException {
-        // Implement the logic to delete a product from the database
-    }
 }

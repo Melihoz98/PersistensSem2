@@ -10,6 +10,12 @@ public class Product {
     private String countryOfOrigin;
     private double purchasePrice;
 
+    
+    public Product() {
+    	
+    }
+    
+    
     public Product(int productID, String productName, String productDescription, double productPrice, String productType, String countryOfOrigin, double purchasePrice) {
         this.productID = productID;
         this.productName = productName;
