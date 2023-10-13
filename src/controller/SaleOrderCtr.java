@@ -72,6 +72,12 @@ public double findCustomerByCustomerID(int customerID) throws DataAccessExceptio
 
 
 	public void associateCustomer(Customer newCustomer) {
+	    if (order != null) {
+	        order.addCustomer(newCustomer);
+	    } else {
+	        System.err.println("Cannot associate a customer. SaleOrder is missing.");
+	    }
+	}
 		
 	}
-}
+
