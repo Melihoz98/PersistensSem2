@@ -30,11 +30,7 @@ public class CustomerCtr {
 		return res;
 	}
 	
-	//int customerID, String lastName, String firstName, String streetName, String houseNo, String zipCode, String phoneNo, String customerType, String clubType, String clubName
-//	public Customer insert(Customer customer) throws DataAccessException {
-//		Customer res = cusDB.insert(customer);
-//		return res;
-//	}
+	
 	public Customer createCustomer(int customerID, String lastName, String firstName,  String streetName, String houseNo,  String zipCode, String phoneNo, String customerType, String clubType, String clubName) throws DataAccessException {
 	    Customer newCustomer = new Customer(0, lastName, firstName, streetName, houseNo, zipCode,  phoneNo, customerType, clubType, clubName);
 	    // Insert the new customer into the database
