@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ public class SaleOrder {
 	
 	private int ID;
 	private boolean deliveryStatus;
-	private int deliveryDate;
+	private String deliveryDate;
 	private int customerID;
 	private List <OrderLine>products;
 	private LocalDate date;
@@ -19,11 +20,13 @@ public class SaleOrder {
     	
     }
 
-	public SaleOrder (int ID, boolean deliveryStatus, int deliveryDate, int customerID) {
+	public SaleOrder (int ID, boolean deliveryStatus, String deliveryDate, int customerID) {
 		this.ID = ID;
 		this.deliveryStatus = deliveryStatus;
 		this.deliveryDate = deliveryDate;
 		this.customerID = customerID;
+		this.c = new Customer();
+		c.setCustomerID(customerID);
 		products = new ArrayList<>();
 		setDate(LocalDate.now());
 	}
@@ -79,11 +82,11 @@ public class SaleOrder {
 	}
 	
 	
-	public int getDeliveryDate() {
+	public String getDeliveryDate() {
 		return deliveryDate;
 	}
 	
-	public void setDeliveryDate(int deliveryDate) {
+	public void setDeliveryDate(String deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
 	

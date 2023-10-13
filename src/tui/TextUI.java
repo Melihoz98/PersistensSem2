@@ -4,6 +4,7 @@ import controller.CustomerCtr;
 import controller.ProductCtr;
 import controller.SaleOrderCtr;
 import model.Customer;
+import model.Product;
 import controller.DataAccessException;
 
 import java.util.Scanner;
@@ -84,6 +85,28 @@ public class TextUI {
         }
     }
 
+//    private void addProductToSaleOrder() {
+//        System.out.print("Enter product ID: ");
+//        int productID = scanner.nextInt();
+//        System.out.print("Enter quantity: ");
+//        int quantity = scanner.nextInt();
+//
+//        try {
+//            Product product = productController.findProductByProductID(productID);
+//
+//            if (product != null) {
+//                saleOrderController.addProduct(productID, quantity);
+//                System.out.println("Product added to the sale order.");
+//            } else {
+//                System.err.println("Product with ID " + productID + " not found.");
+//            }
+//        } catch (DataAccessException e) {
+//            System.err.println("Error adding the product to the sale order: " + e.getMessage());
+//        }
+//    }
+
+    
+    
     private void createCustomerAndAssociate() {
         System.out.print("Enter customer name: ");
         String name = scanner.nextLine();
@@ -93,7 +116,8 @@ public class TextUI {
         String phone = scanner.nextLine();
 
         try {
-            Customer newCustomer = customerController.createCustomer(name, address, phone);
+//        	int customerID, String lastName, String firstName,  String streetName, String houseNo,  String zipCode, String phoneNo, String customerType, String clubType, String clubName
+            Customer newCustomer = customerController.createCustomer(0, name, "firstName", address, "houseNo", "zipCode",  phone, "CustomerType", "clubType", "clubName");
             if (newCustomer != null) {
                 saleOrderController.associateCustomer(newCustomer);
                 System.out.println("Customer created and associated with the sale order.");

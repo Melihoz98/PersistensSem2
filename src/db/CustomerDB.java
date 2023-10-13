@@ -140,17 +140,20 @@ public class CustomerDB implements CustomerDBIF {
 	
 	public Customer insert(Customer customer) throws DataAccessException {
 	    try {
+//	    	LastName, FirstName, StreetName, HouseNo, ZipCode, Phones, CustomerType, ClubType, ClubName
 	        insertPS.setString(1, customer.getLastName());
 	        insertPS.setString(2, customer.getFirstName());
 	        insertPS.setString(3, customer.getStreetName());
 	        insertPS.setString(4, customer.getHouseNo());
 	        insertPS.setString(5, customer.getZipCode());
-	        insertPS.setString(6, customer.getCustomerType());
-	        insertPS.setString(7, customer.getClubType());
-	        insertPS.setString(8, customer.getClubName());
+	        insertPS.setString(6, customer.getPhoneNo());
+	        insertPS.setString(7, customer.getCustomerType());
+	        insertPS.setString(8, customer.getClubType());
+	        insertPS.setString(9, customer.getClubName());
 	        
 	        insertPS.executeUpdate();
 	    } catch (SQLException e) {
+	    	System.out.println(e.getMessage());
 	        throw new DataAccessException(DBMessages.COULD_NOT_INSERT, e);
 	    }
 

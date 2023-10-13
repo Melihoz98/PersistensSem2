@@ -51,8 +51,8 @@ public double findCustomerByCustomerID(int customerID) throws DataAccessExceptio
 }
 	public boolean confirm() throws DataAccessException {
 	    if (order != null && order.getCustomer() != null) {
-	        SaleOrder o = order;
-	        order = null;
+	        SaleOrder o = new SaleOrder(0,false,"nu",1520);
+//	        order = null;
 	        return SaleOrderDB.saveOrder(o);
 	    } else {
 	        System.err.println("Cannot confirm and save the order. Customer information is missing.");

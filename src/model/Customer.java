@@ -14,27 +14,36 @@ public class Customer {
     private String customerType;
     private String clubType;
     private String clubName;
-    private List<Phones> phoneNo;
+    private String phoneNo;
 
     
     public Customer() {
     	
     }
 
-    public Customer(int customerID, String lastName, String firstName, String streetName, String houseNo, String zipCode, String customerType, String clubType, String clubName) {
+    public Customer(int customerID, String lastName, String firstName, String streetName, String houseNo, String zipCode, String phoneNo, String customerType, String clubType, String clubName) {
         this.customerID = customerID;
         this.lastName = lastName;
         this.firstName = firstName;
         this.streetName = streetName;
         this.houseNo = houseNo;
         this.zipCode = zipCode;
+        this.phoneNo = phoneNo;
         this.customerType = customerType;
         this.clubType = clubType;
         this.clubName = clubName;
         
     }
 
-    // Getter methods
+    public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	// Getter methods
     public int getCustomerID() {
         return customerID;
     }
@@ -114,7 +123,5 @@ public class Customer {
     }
     
     
-    public List<Phones> getPhoneNumbers() {
-        return phoneNo;
-    }
+   
 }

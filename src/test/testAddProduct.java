@@ -17,7 +17,7 @@ class testAddProduct {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		so = new SaleOrder(0, false, 0, 0);
+		so = new SaleOrder(0, false, "nu", 0);
 		p = new Equipment(123, "Cowboy hat", "A hat worn by cowboys", 14.99, 8.99, "Clothing", "USA", 5, 120, "Blank", 0, null);
 		
 	}
